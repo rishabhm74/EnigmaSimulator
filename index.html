@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma | Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mainFront" id="mainFront">
+        <input type="text" name="" id="enteredText" class="enteredText">
+        <div class="mainButtonHolder">
+            <div class="keyRow1">
+                <div class="keyHolder">
+                    <div class="key" id="q">q</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="w">w</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="e">e</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="r">r</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="t">t</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="z">z</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="u">u</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="i">i</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="o">o</div>
+                </div>
+            </div>
+            <div class="keyRow2">
+                <div class="keyHolder">
+                    <div class="key" id="a">a</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="s">s</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="d">d</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="f">f</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="g">g</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="h">h</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="j">j</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="k">k</div>
+                </div>
+            </div>
+            <div class="keyRow3">
+                <div class="keyHolder">
+                    <div class="key" id="p">p</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="y">y</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="x">x</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="c">c</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="v">v</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="b">b</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="n">n</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="m">m</div>
+                </div>
+                <div class="keyHolder">
+                    <div class="key" id="l">l</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <script src="jquery.js"></script>
+    <script>
+        let enteredKey;
+        let asciiValue;
+        let cipherKey;
+        let cipherId;
+        let extra;
+        $("#enteredText").on( "keyup", function(event){
+            enteredKey = $(this).val();
+            asciiValue = enteredKey.charCodeAt(0);
+
+            cipherKey = asciiValue + 12;
+            if(cipherKey > 122){
+                extra = cipherKey - 122;
+                cipherKey = extra + 97;
+            }
+
+
+            cipherId = String.fromCharCode(cipherKey);
+
+            var key = $("#"+cipherId).addClass('active');
+            setTimeout(function () {
+                key.removeClass('active');
+            }, 700);
+
+            $(this).val("");
+        });
+
+        // A = 65
+        // Z = 90
+        // a = 97
+        // z = 122
+    </script>
+    
+</body>
+</html>
